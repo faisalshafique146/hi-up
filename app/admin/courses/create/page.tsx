@@ -44,10 +44,12 @@ import { tryCatch } from "@/hooks/try-catch";
 import { CreateCourse } from "./actions";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useConfetti } from "@/hooks/use-confetti";
 
 export default function CourseCreationPage() {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+  const { triggerConfetti } = useConfetti();
 
   // 1. Define your form.
   const form = useForm<CourseSchemaType>({
@@ -78,6 +80,7 @@ export default function CourseCreationPage() {
 
       if (result.status === "success") {
         toast.success(result.message);
+        triggerConfetti();
         form.reset();
         router.push("/admin/courses");
       } else if (result.status === "error") {
@@ -190,7 +193,11 @@ export default function CourseCreationPage() {
                   <FormItem className="w-full">
                     <FormLabel> Thumbnail image </FormLabel>
                     <FormControl>
-                      <Uploader fileTypeAccepted="image" value={field.value} onChange={field.onChange} />
+                      <Uploader
+                        fileTypeAccepted="image"
+                        value={field.value}
+                        onChange={field.onChange}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
