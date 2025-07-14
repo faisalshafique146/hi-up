@@ -1,7 +1,6 @@
 import { getIndividualCourse } from "@/app/data/course/get-course";
 import { RenderDescription } from "@/components/rich-text-editor/RenderDescription";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Collapsible,
@@ -20,12 +19,16 @@ import {
 } from "@tabler/icons-react";
 import { CheckIcon } from "lucide-react";
 import Image from "next/image";
+import { checkIfCourseBought } from "@/app/data/user/user-is-enrolled";
+import Link from "next/link";
+import { EnrollmentButton } from "./_components/EnrollmentButton";
 
 type Params = Promise<{ slug: string }>;
 
 export default async function SlugPage({ params }: { params: Params }) {
   const { slug } = await params;
   const course = await getIndividualCourse(slug);
+  const isEnrolled = await checkIfCourseBought(course.id);
 
   const thumbnailUrl = useConstructUrl(course.fileKey);
   return (
@@ -238,21 +241,29 @@ export default async function SlugPage({ params }: { params: Params }) {
 
                     <li className="flex items-center gap-2 text-sm">
                       <div className="rounded-full p-1 bg-green-500/10 text-green-500">
-                        <CheckIcon className="size-3"/>
+                        <CheckIcon className="size-3" />
                       </div>
                       <span>Access on mobile and desktop</span>
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <div className="rounded-full p-1 bg-green-500/10 text-green-500">
-                        <CheckIcon className="size-3"/>
+                        <CheckIcon className="size-3" />
                       </div>
                       <span>Certificate of completion</span>
                     </li>
                   </ul>
                 </div>
               </div>
-              <Button className="w-full">Enroll Now!</Button>
-              <p className="mt-3 text-center text-xs text-muted-foreground ">30-day money-back gurantee</p>
+
+              {isEnrolled ? (
+                <Link href="/dashboard">Watch Course</Link>
+              ) : (
+                <EnrollmentButton courseId={course.id} />
+              )}
+
+              <p className="mt-3 text-center text-xs text-muted-foreground ">
+                30-day money-back gurantee
+              </p>
             </CardContent>
           </Card>
         </div>
