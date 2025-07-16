@@ -1,13 +1,15 @@
+import "server-only";
+
 import { prisma } from "@/lib/db";
 
 export async function getAllCourses() {
-    await new Promise((resolve)=>setTimeout(resolve, 5000));
+  await new Promise((resolve) => setTimeout(resolve, 5000));
   const data = await prisma.course.findMany({
     where: {
       status: "PUBLISHED",
     },
-    orderBy:{
-        createdAt: "desc",
+    orderBy: {
+      createdAt: "desc",
     },
     select: {
       title: true,
@@ -24,4 +26,4 @@ export async function getAllCourses() {
   return data;
 }
 
-export type PublicCourseType = Awaited<ReturnType<typeof getAllCourses>>[0]
+export type PublicCourseType = Awaited<ReturnType<typeof getAllCourses>>[0];

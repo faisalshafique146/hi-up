@@ -1,3 +1,5 @@
+import "server-only";
+
 import { prisma } from "@/lib/db";
 import { requiredAdmin } from "./required-admin";
 import { notFound } from "next/navigation";
