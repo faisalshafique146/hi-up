@@ -36,7 +36,7 @@ export default function VerifyRequest() {
             toast.success("Email verified successfully! Redirecting...");
             router.push("/");
           },
-          onError: (error) => {
+          onError: () => {
             toast.error(
               "Failed to verify email. Please check your OTP and try again."
             );

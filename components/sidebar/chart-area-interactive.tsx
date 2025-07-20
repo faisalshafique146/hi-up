@@ -18,38 +18,38 @@ import {
 
 export const description = "An interactive area chart";
 
-const dummyEnrollmentData = [
-  { date: "2024-05-15", enrollments: 12 },
-  { date: "2024-05-16", enrollments: 8 },
-  { date: "2024-05-17", enrollments: 15 },
-  { date: "2024-05-18", enrollments: 11 },
-  { date: "2024-05-19", enrollments: 19 },
-  { date: "2024-05-20", enrollments: 7 },
-  { date: "2024-05-21", enrollments: 13 },
-  { date: "2024-05-22", enrollments: 16 },
-  { date: "2024-05-23", enrollments: 9 },
-  { date: "2024-05-24", enrollments: 14 },
-  { date: "2024-05-25", enrollments: 18 },
-  { date: "2024-05-26", enrollments: 10 },
-  { date: "2024-05-27", enrollments: 17 },
-  { date: "2024-05-28", enrollments: 6 },
-  { date: "2024-05-29", enrollments: 12 },
-  { date: "2024-05-30", enrollments: 30 },
-  { date: "2024-05-31", enrollments: 9 },
-  { date: "2024-06-01", enrollments: 15 },
-  { date: "2024-06-02", enrollments: 7 },
-  { date: "2024-06-03", enrollments: 18 },
-  { date: "2024-06-04", enrollments: 11 },
-  { date: "2024-06-05", enrollments: 13 },
-  { date: "2024-06-06", enrollments: 19 },
-  { date: "2024-06-07", enrollments: 8 },
-  { date: "2024-06-08", enrollments: 14 },
-  { date: "2024-06-09", enrollments: 10 },
-  { date: "2024-06-10", enrollments: 17 },
-  { date: "2024-06-11", enrollments: 6 },
-  { date: "2024-06-12", enrollments: 12 },
-  { date: "2024-06-13", enrollments: 15 },
-];
+// const dummyEnrollmentData = [
+//   { date: "2024-05-15", enrollments: 12 },
+//   { date: "2024-05-16", enrollments: 8 },
+//   { date: "2024-05-17", enrollments: 15 },
+//   { date: "2024-05-18", enrollments: 11 },
+//   { date: "2024-05-19", enrollments: 19 },
+//   { date: "2024-05-20", enrollments: 7 },
+//   { date: "2024-05-21", enrollments: 13 },
+//   { date: "2024-05-22", enrollments: 16 },
+//   { date: "2024-05-23", enrollments: 9 },
+//   { date: "2024-05-24", enrollments: 14 },
+//   { date: "2024-05-25", enrollments: 18 },
+//   { date: "2024-05-26", enrollments: 10 },
+//   { date: "2024-05-27", enrollments: 17 },
+//   { date: "2024-05-28", enrollments: 6 },
+//   { date: "2024-05-29", enrollments: 12 },
+//   { date: "2024-05-30", enrollments: 30 },
+//   { date: "2024-05-31", enrollments: 9 },
+//   { date: "2024-06-01", enrollments: 15 },
+//   { date: "2024-06-02", enrollments: 7 },
+//   { date: "2024-06-03", enrollments: 18 },
+//   { date: "2024-06-04", enrollments: 11 },
+//   { date: "2024-06-05", enrollments: 13 },
+//   { date: "2024-06-06", enrollments: 19 },
+//   { date: "2024-06-07", enrollments: 8 },
+//   { date: "2024-06-08", enrollments: 14 },
+//   { date: "2024-06-09", enrollments: 10 },
+//   { date: "2024-06-10", enrollments: 17 },
+//   { date: "2024-06-11", enrollments: 6 },
+//   { date: "2024-06-12", enrollments: 12 },
+//   { date: "2024-06-13", enrollments: 15 },
+// ];
 
 const chartConfig = {
   enrollments: {
@@ -64,7 +64,7 @@ interface ChartAreaInteractiveProps {
 
 export function ChartAreaInteractive({ data }: ChartAreaInteractiveProps) {
 
-  const totalEnrollmentNumber = React.useMemo(() => {
+  const totalEnrollmentsNumber = React.useMemo(() => {
     return data.reduce((acc, curr) => acc + curr.enrollments, 0);
   }, [data]);
   return (
@@ -73,7 +73,7 @@ export function ChartAreaInteractive({ data }: ChartAreaInteractiveProps) {
         <CardTitle>Total Enrollments</CardTitle>
         <CardDescription>
           <span className="hidden @[540px]/card:block">
-            Total Enrollments for the last 30 days: {totalEnrollmentNumber}
+            Total Enrollments for the last 30 days: {totalEnrollmentsNumber}
           </span>
           <span className="hidden @[540px]/card:hidden">
             Last 30 days: 1200

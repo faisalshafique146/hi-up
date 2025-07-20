@@ -34,7 +34,7 @@ export async function markLessonComplete(
       status: "success",
       message: "Lesson marked as complete",
     };
-  } catch (error) {
+  } catch {
     return {
       status: "error",
       message: "Failed to mark lesson as complete",

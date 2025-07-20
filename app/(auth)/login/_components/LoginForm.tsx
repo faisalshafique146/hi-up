@@ -32,7 +32,7 @@ export function LoginForm() {
           onSuccess: () => {
             toast.success("Signed in with Github, you will be redirected...");
           },
-          onError: (error) => {
+          onError: () => {
             toast.error("Internal Server Error");
           },
         },
@@ -50,7 +50,7 @@ export function LoginForm() {
             toast.success("Verification email sent, please check your inbox.");
             router.push(`/verify-request?email=${email}`);
           },
-          onError: (error) => {
+          onError: () => {
             toast.error("Failed to send verification email.");
           },
         },

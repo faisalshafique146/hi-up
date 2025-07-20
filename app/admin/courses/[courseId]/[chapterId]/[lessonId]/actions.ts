@@ -33,11 +33,11 @@ export async function updateLesson(
       },
     });
 
-    return{
-        status: "success",
-        message: "Course Updated Successfully"
-    }
-  } catch (error) {
+    return {
+      status: "success",
+      message: "Course Updated Successfully",
+    };
+  } catch {
     return {
       status: "error",
       message: "Failed to update course",

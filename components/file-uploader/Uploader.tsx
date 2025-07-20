@@ -116,7 +116,7 @@ export function Uploader({ value, onChange, fileTypeAccepted }: iAppProps) {
           xhr.setRequestHeader("Content-Type", file.type);
           xhr.send(file);
         });
-      } catch (error) {
+      } catch {
         toast.error("Something Went Wrong");
         setFileState((prev) => ({
           ...prev,
@@ -201,7 +201,7 @@ export function Uploader({ value, onChange, fileTypeAccepted }: iAppProps) {
       }));
 
       toast.success("File removed successfully");
-    } catch (error) {
+    } catch {
       toast.error("Error removing file. please try again");
       setFileState((prev) => ({
         ...prev,
