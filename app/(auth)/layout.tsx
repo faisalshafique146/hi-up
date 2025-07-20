@@ -27,7 +27,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
         </Link>
         {children}
         <div className="text-balance text-center text-xs text-muted-foreground">
-          By Clicking "Continue" you agree to our{" "}
+          By Clicking &quot;Continue&quot; you agree to our{" "}
           <Link href="/terms" className="hover:text-primary underline">
             Terms of Service
           </Link>{" "}

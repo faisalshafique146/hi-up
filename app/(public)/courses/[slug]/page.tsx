@@ -8,7 +8,6 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { Separator } from "@/components/ui/separator";
-import { useConstructUrl } from "@/hooks/use-construct-url";
 import {
   IconBook,
   IconCategory,
@@ -23,6 +22,7 @@ import { checkIfCourseBought } from "@/app/data/user/user-is-enrolled";
 import Link from "next/link";
 import { EnrollmentButton } from "./_components/EnrollmentButton";
 import { buttonVariants } from "@/components/ui/button";
+import { constructUrl } from "@/hooks/use-construct-url";
 
 type Params = Promise<{ slug: string }>;
 
@@ -31,7 +31,7 @@ export default async function SlugPage({ params }: { params: Params }) {
   const course = await getIndividualCourse(slug);
   const isEnrolled = await checkIfCourseBought(course.id);
 
-  const thumbnailUrl = useConstructUrl(course.fileKey);
+  const thumbnailUrl = constructUrl(course.fileKey);
   return (
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 mt-5">
       <div className="order-1 lg:col-span-2">

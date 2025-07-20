@@ -26,7 +26,7 @@ export async function adminGetEnrollmentStats() {
 
   const last30Days: { date: string; enrollments: number }[] = [];
 
-  for (let i = 29; i < 0; i++) {
+  for (let i = 29; i >= 0; i--) {
     const date = new Date();
 
     date.setDate(date.getDate() - i);

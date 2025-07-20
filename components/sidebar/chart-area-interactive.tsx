@@ -63,10 +63,10 @@ interface ChartAreaInteractiveProps {
 }
 
 export function ChartAreaInteractive({ data }: ChartAreaInteractiveProps) {
-
-  const totalEnrollmentsNumber = React.useMemo(() => {
-    return data.reduce((acc, curr) => acc + curr.enrollments, 0);
-  }, [data]);
+  const totalEnrollmentsNumber = React.useMemo(
+    () => data.reduce((acc, curr) => acc + curr.enrollments, 0),
+    [data]
+  );
   return (
     <Card className="@container/card">
       <CardHeader>
