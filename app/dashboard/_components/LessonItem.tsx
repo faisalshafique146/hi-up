@@ -12,10 +12,11 @@ interface iAppProps {
   };
   slug: string;
   isActive?: boolean;
+  completed: boolean;
 }
 
-export function LessonItem({ lesson, slug, isActive }: iAppProps) {
-  const completed = false;
+export function LessonItem({ lesson, slug, isActive, completed }: iAppProps) {
+
   return (
     <Link
       href={`/dashboard/${slug}/${lesson.id}`}
@@ -60,7 +61,11 @@ export function LessonItem({ lesson, slug, isActive }: iAppProps) {
           <p
             className={cn(
               "text-xs font-medium truncate",
-              completed ? "text-green-800 dark:text-green-200": isActive?"text-primary font-semibold":"text-foreground"
+              completed
+                ? "text-green-800 dark:text-green-200"
+                : isActive
+                  ? "text-primary font-semibold"
+                  : "text-foreground"
             )}
           >
             {lesson.position}. {lesson.title}
@@ -71,8 +76,10 @@ export function LessonItem({ lesson, slug, isActive }: iAppProps) {
             </p>
           )}
 
-          {isActive&&!completed &&(
-            <p className="text-[10px] text-primary font-medium">Currently Watching</p>
+          {isActive && !completed && (
+            <p className="text-[10px] text-primary font-medium">
+              Currently Watching
+            </p>
           )}
         </div>
       </div>
